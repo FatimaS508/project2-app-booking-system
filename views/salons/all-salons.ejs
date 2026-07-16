@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/all-salons.css">
+</head>
+<body>
+    <div class="header">
+    <h1>Discover Our Salons</h1>
+    <h2>Beauty & Wellness Near You</h2></div>
+    
+    <div class="salons-div">
+    <% for (let salon of salons) { %>
+        <div class="salon-card">
+            <a href="/salons/<%= salon._id %>">
+            <img src="<%= salon.salon_URL %>" alt="<%= salon.name %>">
+
+            <div class="salon-name">
+                    <strong><%= salon.name %></strong>
+                </a>
+            </div>
+        </div>
+    <% } %>
+</div>
+</body>
+</html>

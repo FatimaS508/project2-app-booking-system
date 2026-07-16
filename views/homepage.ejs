@@ -3,11 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="../css/homePage.css">
     <title>Home</title>
 </head>
 <body>
     <%- include('./partials/navbar') %>
+    <div class="themeImage-div">
+        <img src="../images/BeautyBook.png" class="themeImage">
+    </div>
+<div class="home-div">
+ <% if (user) { %>
+  <h1>Welcome <%= user.username %>!</h1>
+<% } else { %>
+  <h1>Welcome Guest</h1>
+<% } %>
+    <p> Our platform helps you find trusted salons, book appointments easily, and discover beauty services near you <strong> all in one place.</strong> </p>
+    <a href="/salons" class="view-salons"> Discover salons</a>
+    </div>
 
-    <h1>Welcome to my Website</h1>
-</body>
+
+     <%//please adujt the css comment then push the code%>
+   </body>
 </html>

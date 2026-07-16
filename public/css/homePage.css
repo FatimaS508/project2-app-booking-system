@@ -1,0 +1,71 @@
+.home-div h1{
+    color:#251d12;
+    text-align: center;
+    margin: 50px 0;
+    font-size: 50px;
+}
+.home-div h2{
+    text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #2c3e50;           
+  margin: 20px 0;
+  letter-spacing: 1px;
+}
+.view-salons {
+  display: inline-block;
+  margin: 20px auto;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #908071;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.view-salons:hover {
+  background-color: #b1a294;
+  transform: translateY(-2px);
+}
+
+p {
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;              
+  max-width: 700px;
+  margin: 20px auto; 
+  font-size: 30px;       
+}
+.home-div{
+    text-align: center;
+}
+.beautyBook{
+    font-weight: bolder;
+}
+.themeImage-div {
+  width: 100%;
+  max-height: 350px;      
+  overflow: hidden;       
+  margin: 0 auto 30px;    
+  padding: 0;             
+  border-radius: 12px;   
+}
+
+.themeImage {
+  width: 100%;             
+  max-height: 320px;       
+  object-fit: cover;       
+  display: block;
+  margin: 20px auto 30px;  
+  border-radius: 12px;     
+}
+body{
+    background-color: #e5d5c6;
+}
+
+
+

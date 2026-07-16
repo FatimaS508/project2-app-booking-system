@@ -8,11 +8,14 @@ const salonSchema= new mongoose.Schema({
     address:{
         type: String
     },
+    about:{
+        type: String
+    },
     phone:{
         type: Number
     },
     salon_URL:{
-        type: Image
+        type: String
     }
 },{timestamps: true})
 
