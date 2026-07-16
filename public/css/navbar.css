@@ -1,9 +1,10 @@
 nav {
-  background-color: #251d12; 
+  background-color: #e5d5c6; 
   padding: 12px 30px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  border-radius: 20px;
 }
 
 nav a {
@@ -21,6 +22,7 @@ nav a {
 nav a:hover {
   background-color: #b1a294;   
   color: #fff;
+  transform: translateY(-2px);
 }
 
 
@@ -31,6 +33,17 @@ nav .name {
   margin-left: auto;          
   font-size: 1.4rem;        
   font-weight: 700;
-  color: #f1c40f;            
+  color: #251d12;            
   text-transform: uppercase;  
+ transition: background 0.3s ease, transform 0.2s ease;
+}
+nav .logo img {
+  height: 2.5em;          
+  width: auto;
+  border-radius: 6px;    
+  width: 80px;
+  
+}
+body{
+    background-color: #2c1b0f;
 }
