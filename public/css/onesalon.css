@@ -1,0 +1,8 @@
+.accordion-content {
+  display: none;
+  padding: 10px;
+}
+
+.accordion-content.active {
+  display: block;
+}

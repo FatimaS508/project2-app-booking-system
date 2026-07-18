@@ -1,25 +1,32 @@
-const mongoose= require("mongoose")
+const mongoose = require("mongoose")
 
-const serviceSchema= new mongoose.Schema({
-    name:{
+const serviceSchema = new mongoose.Schema({
+    name: {
         type: String
     },
-    price:{
+    price: {
         type: Number
     },
-    description:{
+    description: {
         type: String
     },
-    Duration:{
+    duration: {
         type: Number
     },
-    salon_id:{
+    salon_id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref= "Salon"
+        ref: "Salon",
+        required: true
+    },
+    category_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Category",
+       
     }
 
-},{timestamps: true})
 
-const Service= mongoose.model("Service", serviceSchema)
+}, { timestamps: true })
 
-module.exports= Service
+const Service = mongoose.model("Service", serviceSchema)
+
+module.exports = Service

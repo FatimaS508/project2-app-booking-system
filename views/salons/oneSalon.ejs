@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/onesalon.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <h1>one salon view</h1>
+        <h2> <%= salonFind.name %></h2>
+        <% for(let category of categories){ %>
+            <div class="accordion">
+                <button class="accordion-head">
+                    <%= category.name %>
+                        <span>+</span>
+                </button>
+                <div class="accordion-content">
+        
+                    <% category.services.forEach(service=> { %>
+        
+                        <div class="service">
+                            <h4>
+                                <%= service.name %>
+                            </h4>
+                            <p>
+                                <%= service.price %> BD
+                            </p>
+                        </div> <% }) %>
+                </div>
+            </div>
+            <% } %>
+
+<script> //this is to expand each category
+    document.querySelectorAll(".accordion-head").forEach(button => {
+        button.addEventListener("click", () => {
+            const content = button.nextElementSibling;
+            content.classList.toggle("active");
+        });
+    });
+</script>
+
+</body>
+</html>
