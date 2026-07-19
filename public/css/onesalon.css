@@ -56,4 +56,44 @@ dialog{
 }
 .service{
   color: #e5d5c6;
+  border-color: #e5d5c6;
+  border-width: 0.05;
+}
+.switch:checked{/*double check this*/
+    color: rgb(93, 188, 190);
+}
+.switch{
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    background-color: beige;
+    outline: 0px;
+    border: 0px;
+    margin: 0px;
+    cursor: pointer;
+    user-select: none;
+    vertical-align: middle;
+    appearance: none;
+    text-decoration: none;
+    padding: 9px;
+    border-radius: 50%
+}
+.continue{
+  .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.btn:hover {
+  background: #0056b3;
+}
+
 }

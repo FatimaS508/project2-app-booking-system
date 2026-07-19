@@ -3,6 +3,7 @@ const connectToDB = require('./db.js')
 const Salon = require('./models/salons.js')
 const Category= require('./models/categories.js')
 const Service= require('./models/service.js')
+const Emp= require('./models/employee.js')
 
 connectToDB()
 
@@ -11,6 +12,7 @@ async function seedDB(){
         await Salon.deleteMany({});
         await Category.deleteMany({});
         await Service.deleteMany({})
+        await Emp.deleteMany({})
 
 
     const createdSalons = await Salon.insertMany([
@@ -22,7 +24,7 @@ async function seedDB(){
         },
         {
             name: "blossom district beauty salon",
-            about:"A salon specializing in nails and massage, in addition to eyelashes, lightening and tinting of eyelashes and eyebrows, skin cleaning, body scrubs and henna. Working Hours: 1PM - 9:30PM",
+            about:"A salon specializing in nails and massage, in addition to eyelashes, lightening and tinting of eyelashes and eyebrows, skin cleaning, body scrubs and henna. Working Hours: 1PM - 9:00PM",
             address: "GB Cafe A'ali, block 732",
             salon_URL: "/images/2-blossom-header.jpeg"
         },
@@ -87,6 +89,77 @@ const createCategories = await Category.insertMany([
     }
 ])
 
+const insertEmployees = await Emp.insertMany([
+    {
+        name: "Mila Cruz",
+        speciality: "Nail Artist - 10 years expert in nails art",
+        salon_id: createdSalons[0]._id,
+         rate: 5,
+        availability: generateAvailability(12,21)
+        
+    },
+    {
+        name: "Amara Diallo",
+        speciality: "Senior Stylist: Hair cut and luxury styling",
+        salon_id: createdSalons[0]._id,
+        rate: 5 ,
+        availability: generateAvailability(12,21)
+                 
+
+    },
+    {
+        name: "Julia Dubois",
+        speciality: "Full service specialist",
+        salon_id: createdSalons[0]._id ,
+        rate: 4,
+        availability: generateAvailability(12,21)
+                 
+    },
+    {
+        name: "Luna Vane",
+        speciality: "Master in hair extentions, Stylist, Colorist",
+        salon_id: createdSalons[1]._id ,
+        rate: 5,
+        availability: generateAvailability(13,21)
+                 
+    },
+    {
+        name: "Anaya R.",
+        speciality: "Mani & Pedi care",
+        salon_id: createdSalons[1]._id ,
+        rate: 4.5,
+        availability: generateAvailability(13,21)
+                
+    },
+    {
+        name: 'Malleka',
+        speciality: "Message specialist",
+        salon_id: createdSalons[1]._id ,
+        rate: 5,
+        availability: generateAvailability(13,21)         
+    }
+
+])
+function generateAvailability(startHour, endHour) { 
+
+    const slots = []; //empty array holds time slot
+
+    const today = new Date(); //new object to hold current date, time
+
+    today.setHours(startHour, 0, 0, 0); //set today for the given start hour
+
+    while (today.getHours() < endHour) { //loop until reach end hour
+
+        slots.push({ //add new slot and by default set to avaailable-not booked
+            time: new Date(today),
+            isBooked: false
+        });
+
+        today.setMinutes(today.getMinutes() + 30); //next slot after 30 min
+    }
+
+    return slots;
+}
 
 
 }catch(err){

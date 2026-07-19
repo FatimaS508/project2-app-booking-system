@@ -32,16 +32,25 @@
                     <% category.services.forEach(service=> { %>
         
                         <div class="service">
+                            <input type="radio" name="service" value="<%= service._id %>" class="service-radio">
                             <h4>
                                 <%= service.name %>
                             </h4>
                             <p>
                                 <%= service.price %> BD
                             </p>
-                        </div> <% }) %>
+                        </div>
+                        <% }) %>
                 </div>
             </div>
+            
             <% } %>
+            <div class="continue">
+                <a id="continue" href="#" class="button">
+                    Continue  <span> ></span>
+                </a>
+
+            </div>
 
 <script> //this is to expand each category
     document.querySelectorAll(".accordion-head").forEach(button => {
@@ -74,6 +83,24 @@ const openInfoButton= document.querySelectorAll('.info')
             }
         })
     })
+
+    //manage continue radio
+    const continueBtn = document.getElementById("continue");
+        const radios = document.querySelectorAll(".service-radio");
+
+        continueBtn.addEventListener("click", (e) => {
+
+            const selected = document.querySelector(".service-radio:checked");
+
+            if (!selected) {
+                e.preventDefault();
+                alert("Please select a service first.");
+                return;
+            }
+            console.log(`/salons/booking/${selected.value}`);
+
+            window.location.href = `/salons/booking/${selected.value}`;
+        });
 </script>
 
 </body>
