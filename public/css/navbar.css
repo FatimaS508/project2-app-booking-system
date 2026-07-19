@@ -47,3 +47,7 @@ nav .logo img {
 body{
     background-color: #2c1b0f;
 }
+
+.logo{
+  background-color: initial;
+}

@@ -17,11 +17,12 @@ async function seedDB(){
         {
           name: "Aroma Beauty Lounge" ,
           address: "752, Saar area 507",
+          about:" About Us: Aroma Beauty Lounge & Spa is a premium beauty and wellness salon located in Saar, Bahrain. We offer a wide range of services, including hair, nails, lashes, massage, Moroccan baths, and spa treatments. Our mission is to provide a relaxing, luxurious experience with professional care, high-quality products, and personalized service, helping every client feel confident and beautiful. Working Hours: 12AM - 9PM ",
           salon_URL: "/images/1-aroma-header.jpeg" //show the 1-aroma-header.jpeg
         },
         {
             name: "blossom district beauty salon",
-            about:"A salon specializing in nails and massage, in addition to eyelashes, lightening and tinting of eyelashes and eyebrows, skin cleaning, body scrubs and henna.",
+            about:"A salon specializing in nails and massage, in addition to eyelashes, lightening and tinting of eyelashes and eyebrows, skin cleaning, body scrubs and henna. Working Hours: 1PM - 9:30PM",
             address: "GB Cafe A'ali, block 732",
             salon_URL: "/images/2-blossom-header.jpeg"
         },

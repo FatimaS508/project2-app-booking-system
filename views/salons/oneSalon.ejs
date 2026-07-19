@@ -9,8 +9,18 @@
 </head>
 <body>
     <%- include('../partials/navbar') %>
-    <h1>one salon view</h1>
-        <h2> <%= salonFind.name %></h2>
+    <h1></h1>
+    <div class="img-name-info">
+    <img src="<%= salonFind.salon_URL %>" alt="salon image">
+        <h2 class="salonName"> <%= salonFind.name %></h2>
+        <button class="info" salon-id="<%= salonFind._id %>"> ⓘ </button>
+    </div>
+    <dialog id="salonModel-<%= salonFind._id %>"> <h2>Salon Information</h2>
+        <p> <%= salonFind.about %></p>
+
+
+        <button class="closeButton">Close</button>
+    </dialog>
         <% for(let category of categories){ %>
             <div class="accordion">
                 <button class="accordion-head">
@@ -40,6 +50,30 @@
             content.classList.toggle("active");
         });
     });
+
+    //pop dialog code
+const openInfoButton= document.querySelectorAll('.info')
+    openInfoButton.forEach(button=> {
+        button.addEventListener('click',()=>{
+            const salonID= button.dataset.salonID
+            const salonId= button.getAttribute('salon-id')
+
+            const target= document.getElementById(`salonModel-${salonId}`)
+
+            if(target){
+                target.showModal()
+            }
+        })
+    })
+    const close= document.querySelectorAll('.closeButton')
+    close.forEach(button=>{
+        button.addEventListener('click',()=>{
+            const open= button.closest('dialog')
+            if(open){
+                open.close()
+            }
+        })
+    })
 </script>
 
 </body>
