@@ -6,14 +6,26 @@
     <title>Document</title>
 </head>
 <body>
-    <% employees.forEach(employee => {  //user can ONLY book one service%>
+    <h2> please select a date</h2>
+    <% dates.forEach(date=> { %>
+    
+        <button data-date="<%= date.value %>">
+            <%= date.display %>
+        </button>
+    
+        <% }) %>
+    
+    <% employees.forEach(employee => { %>
 
     <h3><%= employee.name %></h3>
 
     <% employee.availability.forEach(slot => { %>
 
+        
+
         <button>
-            <%= slot.time.toLocaleTimeString([], {
+            <%= new Date(slot.time).toLocaleTimeString([], {
+                timeZone: "Asia/Bahrain",
                 hour: "2-digit",
                 minute: "2-digit"
             }) %>
@@ -22,5 +34,49 @@
     <% }) %>
 
 <% }) %>
+<script>
+const slots = document.querySelectorAll(".slot");
+const feedback = document.querySelector("#feedback");
+
+
+slots.forEach(slot => {
+
+    slot.addEventListener("click", async ()=>{ //the clickable slot
+
+
+        const time = slot.dataset.time; //grap the time value, save it in time
+
+        const employeeId = document.querySelector("#employee").value; //grap what user clicked
+        const date = document.querySelector("#date").value; //grap date
+
+
+        const response = await fetch(
+            `/salons/check-time?employeeId=${employeeId}&date=${date}&time=${time}` //is time and date in specific emp available?
+        );
+
+
+        const result = await response.json(); //the answer: available or not and save in result
+
+
+        if(result.available){
+
+            feedback.textContent = "Time is available";
+
+            slot.disabled = false;
+            slot.classList.add("available");
+
+        }else{
+
+            feedback.textContent = "This time is already booked, please choose another slot";
+
+            slot.disabled = true;
+            slot.classList.add("unavailable");
+
+        }
+
+    });
+
+});
+</script>
 </body>
 </html>

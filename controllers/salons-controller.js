@@ -32,9 +32,28 @@ router.get("/booking/:serviceId", async (req, res) => {
         salon_id: service.salon_id
     });
 
+    let dates = []; //make cards
+
+    for (let i = 0; i < 7; i++) { //7 cards
+
+        let date = new Date(); //create fresh today's date everytime
+
+        date.setDate(date.getDate() + i); //move into the 7 cards
+
+        dates.push({//two version of date
+            value: date.toISOString().split("T")[0], //for machine/server to understand it
+            display: date.toLocaleDateString("en-US", { //to browser/ show it in page
+                weekday: "short",
+                day: "numeric",
+                month: "short"
+            })
+        });
+    }
+
     res.render("salons/booking.ejs", {
         service,
-        employees
+        employees,
+        dates
     });
 });
 
