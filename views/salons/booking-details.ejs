@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="javascript:window.history.back();">←</a>
+    <h1>booking details</h1>
+    <h2>Confirm Appointment</h2>
+
+
+    <h3>Service:</h3>
+    <p>
+        <%= service.name %>
+    </p>
+
+
+    <h3>Employee:</h3>
+    <p>
+        <%= employee.name %>
+    </p>
+
+
+    <h3>Date:</h3>
+    <p>
+        <%= date %>
+    </p>
+
+
+    <h3>Time:</h3>
+    <p>
+        <%= time %>
+    </p>
+
+
+
+    <form action="/salons/booking-details" method="POST">
+
+
+        <input type="hidden" name="service_id" value="<%= service._id %>">
+
+        <input type="hidden" name="employee_id" value="<%= employee._id %>">
+
+        <input type="hidden" name="date" value="<%= date %>">
+
+        <input type="hidden" name="time" value="<%= time %>">
+
+
+        <label>Name</label>
+        <input name="customerName">
+
+
+        <label>Telephone</label>
+        <input name="phone">
+
+
+        <label>Notes</label>
+        <textarea name="notes"></textarea>
+
+
+        <label>
+            <input type="checkbox" name="isGift">
+            Is gift?
+        </label>
+
+
+        <button>
+            Confirm Booking
+        </button>
+
+
+    </form>
+</body>
+</html>

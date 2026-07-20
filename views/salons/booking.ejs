@@ -1,122 +1,120 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/navbar.css">
-    <link rel="stylesheet" href="/css/booking.css">
-</head>
-<body>
-    <%- include('../partials/navbar') %>
-    <h2> please select a date</h2>
-    <% dates.forEach(date=> { %>
-        
-    
-        <button class="date-btn" data-date="<%= date.value %>">
-            <%= date.display %>
-        </button>
-    
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <link rel="stylesheet" href="/css/navbar.css"> 
+    <link rel="stylesheet" href="/css/booking.css"> 
+</head> 
+<body> 
+    <%- include('../partials/navbar') %> 
+ 
+    <a href="javascript:window.history.back();" class="back">← </a> 
+    <h2> please select a date</h2> 
+    <% dates.forEach(date => { %> 
+        <button class="date-btn" data-date="<%= date.value %>" > 
+            <%# data-date stores the machine value %> 
+            <%= date.display %>  
+        </button> 
+    <% }) %> 
+ 
+    <div id="times" style="display:none;"> 
+        <% employees.forEach(employee => { %>  
+            <h3><%= employee.name %></h3> 
+ 
+            <% employee.availability.forEach(slot => { %> 
+                <button 
+                    class="slot" 
+                    data-time="<%= new Date(slot.time).toISOString() %>"
+                    data-employee="<%= employee._id %>"
+                    <%= slot.isBooked ? 'disabled' : '' %>
+                > 
+                    <%= new Date(slot.time).toLocaleTimeString([], { 
+                        timeZone: "Asia/Bahrain", 
+                        hour: "2-digit", 
+                        minute: "2-digit" 
+                    }) %> 
+                </button> 
+            <% }) %> 
         <% }) %>
+    </div> 
+ 
+    <div> 
+        <p id="feedback"></p>
+    </div> 
 
-    <div id="times" style="display:none;">
-    <% employees.forEach(employee => { %>
-
-    <h3><%= employee.name %></h3>
-
-    <% employee.availability.forEach(slot => { %>
-<% if(slot.isBooked){ //if slot is booked so disable%> 
-<button disabled class="date-btn">
-            <%= new Date(slot.time).toLocaleTimeString([], {
-                timeZone: "Asia/Bahrain",
-                hour: "2-digit",
-                minute: "2-digit"
-            }) %>
-        </button>
-<% }else{ %>
-        
-
-        <button class="date-btn">
-            <%= new Date(slot.time).toLocaleTimeString([], {
-                timeZone: "Asia/Bahrain",
-                hour: "2-digit",
-                minute: "2-digit"
-            }) %>
-        </button>
-
-<% } %>
-
-    <% }) %>
-
-<% }) %></div>
-
-<div> <p> you </div>
-
-
-
-
-
+    <div><button id="continueBtn" style="display: none;">
+            Continue
+        </button></div>
+ 
 <script>
-const slots = document.querySelectorAll(".slot");
-const feedback = document.querySelector("#feedback");
-
+const serviceId = "<%= service._id %>";
 const dateButtons = document.querySelectorAll(".date-btn");
+const slots = document.querySelectorAll(".slot");
 const times = document.querySelector("#times");
+const feedback = document.querySelector("#feedback");
+const continueBtn = document.querySelector("#continueBtn");
 
+// Show time slots after selecting a date
+let selectedDate = null;
+let selectedTime = null;
+let selectedEmployee = null;
+let selectedEmployeeName = null;
 
-// show slots after picking date
 dateButtons.forEach(button => {
-
     button.addEventListener("click", () => {
 
+        dateButtons.forEach(btn => btn.classList.remove("selected"));
+
+        button.classList.add("selected");
+
+        selectedDate = button.dataset.date;
+
         times.style.display = "block";
-
     });
-
 });
 
+/// Handle time slot booking
 
-// check slot availability
+
 slots.forEach(slot => {
 
-    slot.addEventListener("click", async ()=>{
+    slot.addEventListener("click", () => {
+        continueBtn.style.display="block"
 
+        slots.forEach(s => s.classList.remove("selected"));
 
-        const time = slot.dataset.time;
+        slot.classList.add("selected");
 
+        selectedTime = slot.dataset.time;
+        selectedEmployee = slot.dataset.employee;
+        selectedEmployeeName = slot.parentElement.querySelector("h3").textContent;
 
-        const employeeId = document.querySelector("#employee").value;
-        const date = document.querySelector("#date").value;
-
-
-        const response = await fetch(
-            `/salons/check-time?employeeId=${employeeId}&date=${date}&time=${time}`
-        );
-
-
-        const result = await response.json();
-
-
-        if(result.available){
-
-            feedback.textContent = "Time is available";
-            console.log("time available")
-
-            slot.disabled = false;
-            slot.classList.add("available");
-
-        }else{
-
-            feedback.textContent = "This timing is already booked, please choose another slot";
-
-            slot.disabled = true;
-            slot.classList.add("unavailable");
-
-        }
+        feedback.textContent =
+            `You selected ${slot.textContent.trim()}`;
 
     });
 
 });
-</script>
-</body>
+
+
+
+
+continueBtn.addEventListener("click", async () => {
+
+
+
+    if (!selectedTime) {
+        alert("Please select a time.");
+        return;
+    }
+
+   window.location.href =
+    `/salons/booking-details?service=${serviceId}&employee=${selectedEmployee}&date=${selectedDate}&time=${selectedTime}`;
+
+});
+
+</script> 
+</body> 
 </html>

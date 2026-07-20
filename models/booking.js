@@ -22,6 +22,22 @@ const bookingSchema= new mongoose.Schema({
     salon_id:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Salon"
+    },
+    customerName: {
+        type: String
+    },
+
+    phone: {
+        type: String
+    },
+
+    notes: {
+        type: String
+    },
+
+    isGift: {
+        type: Boolean,
+        default: false
     }
 
 },{timestamps: true})
