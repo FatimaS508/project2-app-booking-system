@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/navbar.css">
 </head>
 <body>
+    <%- include('../partials/navbar') %>
     <h1>Thank you for choosing us. can't wait to see you!</h1>
     <div>
         <h2>Booking Confirmation</h2>
@@ -25,13 +27,13 @@
         
         <h3>Date</h3>
         <p>
-            <%= booking.date.toLocaleDateString() %>
+            <%= booking.date.toLocaleDateString("en-US", { day: "numeric" , month: "long" }) %>
         </p>
         
         
         <h3>Time</h3>
         <p>
-            <%= booking.time %>
+            <%= new Date(booking.time).toLocaleTimeString("en-US", { hour: "numeric" , minute: "2-digit" }) %>
         </p>
         
         
@@ -60,9 +62,9 @@
         
         <p>
             Gift:
-            
+
             <%= booking.isGift ? "Yes" : "No" %>
-            <% if(isGift="Yes"){ %><p>please send the reciever address on whatsapp number: 33842291</p><% } %>
+            <% if(isGift="Yes"){ %><p id="giftMessage">please send the reciever address on whatsapp number: 33842291</p><% } %>
         </p>
     </div>
 </body>
