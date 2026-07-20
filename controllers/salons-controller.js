@@ -48,7 +48,7 @@ router.get("/booking/:serviceId", async (req, res) => {
                 month: "short"
             })
         });
-    }
+    } //next goal, after pick date , time then next button
 
     res.render("salons/booking.ejs", {
         service,

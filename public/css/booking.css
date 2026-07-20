@@ -1,0 +1,9 @@
+h3, h2{
+    color:antiquewhite;
+}
+.date-btn.clicked{
+background-color: #b1a294;
+}
+.date-btn :hover{
+background-color: #b1a294;
+}

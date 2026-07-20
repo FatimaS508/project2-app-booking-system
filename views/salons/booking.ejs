@@ -4,26 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/booking.css">
 </head>
 <body>
+    <%- include('../partials/navbar') %>
     <h2> please select a date</h2>
     <% dates.forEach(date=> { %>
+        
     
-        <button data-date="<%= date.value %>">
+        <button class="date-btn" data-date="<%= date.value %>">
             <%= date.display %>
         </button>
     
         <% }) %>
-    
+
+    <div id="times" style="display:none;">
     <% employees.forEach(employee => { %>
 
     <h3><%= employee.name %></h3>
 
     <% employee.availability.forEach(slot => { %>
-
+<% if(slot.isBooked){ //if slot is booked so disable%> 
+<button disabled class="date-btn">
+            <%= new Date(slot.time).toLocaleTimeString([], {
+                timeZone: "Asia/Bahrain",
+                hour: "2-digit",
+                minute: "2-digit"
+            }) %>
+        </button>
+<% }else{ %>
         
 
-        <button>
+        <button class="date-btn">
             <%= new Date(slot.time).toLocaleTimeString([], {
                 timeZone: "Asia/Bahrain",
                 hour: "2-digit",
@@ -31,43 +44,70 @@
             }) %>
         </button>
 
+<% } %>
+
     <% }) %>
 
-<% }) %>
+<% }) %></div>
+
+<div> <p> you </div>
+
+
+
+
+
 <script>
 const slots = document.querySelectorAll(".slot");
 const feedback = document.querySelector("#feedback");
 
+const dateButtons = document.querySelectorAll(".date-btn");
+const times = document.querySelector("#times");
 
+
+// show slots after picking date
+dateButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        times.style.display = "block";
+
+    });
+
+});
+
+
+// check slot availability
 slots.forEach(slot => {
 
-    slot.addEventListener("click", async ()=>{ //the clickable slot
+    slot.addEventListener("click", async ()=>{
 
 
-        const time = slot.dataset.time; //grap the time value, save it in time
+        const time = slot.dataset.time;
 
-        const employeeId = document.querySelector("#employee").value; //grap what user clicked
-        const date = document.querySelector("#date").value; //grap date
+
+        const employeeId = document.querySelector("#employee").value;
+        const date = document.querySelector("#date").value;
 
 
         const response = await fetch(
-            `/salons/check-time?employeeId=${employeeId}&date=${date}&time=${time}` //is time and date in specific emp available?
+            `/salons/check-time?employeeId=${employeeId}&date=${date}&time=${time}`
         );
 
 
-        const result = await response.json(); //the answer: available or not and save in result
+        const result = await response.json();
 
 
         if(result.available){
 
             feedback.textContent = "Time is available";
+            console.log("time available")
 
             slot.disabled = false;
             slot.classList.add("available");
 
         }else{
 
-            feedback.textContent = "This time is already booked, please choose another slot";
+            feedback.textContent = "This timing is already booked, please choose another slot";
 
             slot.disabled = true;
             slot.classList.add("unavailable");
