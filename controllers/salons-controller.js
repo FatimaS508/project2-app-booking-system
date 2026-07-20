@@ -5,6 +5,7 @@ const Category = require("../models/categories")
 const services= require("../models/service")
 const Service = require("../models/service")
 const emp= require("../models/employee")
+const Booking = require("../models/booking")
 
 /*router.get("/FR", async (req, res) => {
   res.render("salons/timing.ejs");
@@ -20,6 +21,7 @@ router.get("/booking-details", async(req,res)=>{
     const service = await Service.findById(req.query.service);
 
     const employee = await emp.findById(req.query.employee);
+    const isGift= await Booking.findById(req.query.isGift)
 
 
     res.render("salons/booking-details.ejs",{
@@ -28,7 +30,8 @@ router.get("/booking-details", async(req,res)=>{
         employee,
 
         date:req.query.date,
-        time:req.query.time
+        time:req.query.time,
+        isGift
 
     });
 
@@ -81,9 +84,70 @@ router.get("/booking/:serviceId", async (req, res) => {
 
     } catch (err) {
         console.error(err);
-        res.status(500).send("Server Error");
     }
 });
+
+router.post("/booking-details", async(req,res)=>{
+    try{
+    if(req.body.isGift==="on"){
+        req.body.isGift= true;
+    }else{
+        req.body.isGift= false;
+    }
+
+    const {
+        service_id,
+        employee_id,
+        date,
+        time,
+        customerName,
+        phone,
+        notes,
+        isGift
+
+    } = req.body;
+
+
+    const service = await Service.findById(service_id);
+
+
+    const booking=await Booking.create({
+
+        service_id,
+
+        employee_id,
+
+        salon_id: service.salon_id,
+
+
+        date:new Date(date),
+
+        time,
+
+        customerName,
+
+        phone,
+
+        notes,
+
+        isGift
+        
+
+    });
+
+        const bookingInfo = await Booking.findById(booking._id).populate("service_id").populate("employee_id");
+        console.log(bookingInfo);
+        res.render("salons/confirm.ejs", {
+            booking: bookingInfo
+        });
+
+
+    }catch(err){
+        console.log("booking failed: " +err)
+    }
+
+});
+
 
 
 
