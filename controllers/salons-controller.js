@@ -52,7 +52,7 @@ router.get("/appointments", async (req, res) => {
         
 
         res.render("salons/appointment.ejs", {
-            bookings
+            bookings , updated: req.query.updated
         });
 
     } catch (err) {
@@ -175,9 +175,19 @@ router.post("/booking-details", async(req,res)=>{
 
 
 router.delete("/appoint/:id", async (req, res) => {
-  await Booking.findByIdAndDelete(req.params.id);
+   await Booking.findByIdAndDelete(req.params.id);
   res.redirect("/salons/appointments");
 });
+
+router.get("/appoint/:id/update", async (req,res)=>{
+const update = await Booking.findById(req.params.id)
+res.render("salons/update.ejs", {updateBookings: update})
+})
+
+router.put("/appoint/:id", async (req,res)=>{
+    const updated = await Booking.findByIdAndUpdate(req.params.id, req.body)
+    res.redirect("/salons/appointments?updated=true");
+})
 
 
 

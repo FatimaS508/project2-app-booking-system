@@ -23,12 +23,24 @@
       <p>Salon: <%= appoint.salon_id.name %></p>
       <p>Service: <%= appoint.service_id.name %></p>
       <p>Price: BD<%= appoint.service_id.price %></p>
+      <p>Customer Name: <%= appoint.customerName %></p>
+      <p>Phone Number:+973 <%= appoint.phone %></p>
+      <p>special request: <%= appoint.notes %></p>
+      <p>Is Gigt?: <%= appoint.isGift %></p>
+
+
+
 
       <form action="/salons/appoint/<%= appoint._id %>?_method=DELETE" method="POST" style="display:inline;">
         <button type="submit">Cancel Booking</button>
       </form>
+      <a href="/salons/appoint/<%= appoint._id %>/update">Update info</a>
     </div>
   <% } %>
+<% } %>
+
+<% if (updated) { %>
+  <script>alert('The food updated successfully');</script>
 <% } %>
 
 </body>
