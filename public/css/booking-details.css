@@ -1,9 +1,6 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
-}
 #back {
     text-decoration: none;
-    font-size: 18px;
+    font-size: 20px;
     margin: 20px;
     display: inline-block;
     color: inherit;
@@ -18,36 +15,61 @@ body {
 #back:hover {
     opacity: 0.7;
 }
-form {
-    max-width: 500px;
+.card{
+    max-width: 550px;
     margin: 30px auto;
     padding: 30px;
     border: 1px solid #ddd;
     border-radius: 12px;
+}
+form {
     display: flex;
     flex-direction: column;
     gap: 18px;
+}
+h1 {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    color: #e5d5c6;
+}
+.summary {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 25px 30px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+}
+.summary h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #e5d5c6;
+}
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+.info-row:last-child {
+    border-bottom: none;
+}
+.info-row span {
+    font-weight: 600;
+    color: #e5d5c6;
+}
+.info-row p {
+    margin: 0;
+    font-weight: 500;
+    color: #e5d5c6;
 }
 label{
     color:#e5d5c6 ;
     font-weight: 600;
     font-size: 15px;
-    margin-bottom: -5px;
-}
-textarea::placeholder {
-  color: gray;     
-  font-style: italic; 
-}
-#giftNote {
-  display: block;         
-  margin-top: 8px;        
-  font-size: 0.9em;        
-  color: #555;            
-  font-style: italic;      
-  background: #f9f9f9;    
-  padding: 6px 10px;      
-  border-left: 3px solid #e5d5c6; 
-  border-radius: 4px;     
+   margin-bottom: -5px;
 }
 input[type="text"],
 input[type="tel"],
@@ -62,22 +84,33 @@ input:not([type="checkbox"]) {
         box-shadow 0.2s ease;
     box-sizing: border-box;
 }
-textarea {
-    min-height: 120px;
-    resize: vertical;
-}
-input:focus,
-textarea:focus {
-    outline: none;
-    border-color: #888;
-    box-shadow: 0 0 0 3px rgba(0,0,0,0.08);
-}
 label:has(input[type="checkbox"]) {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-top: 5px;
     font-weight: 500;
+}
+input::placeholder,
+textarea::placeholder {
+    color: gray;
+    font-style: italic;
+}
+#giftNote {
+  display: block;         
+  margin-top: 8px;        
+  font-size: 0.9em;        
+  color: #555;            
+  font-style: italic;      
+  background: #f9f9f9;    
+  padding: 6px 10px;      
+  border-left: 3px solid #e5d5c6; 
+  border-radius: 4px;     
+
+    line-height: 1.5;
+
+    background: #f8f8f8;
+
 }
 button {
     padding: 10px 24px;

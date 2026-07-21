@@ -5,40 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appointment</title>
     <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/AllAppoint.css">
 </head>
 <body>
     <%- include('../partials/navbar') %>
+    <div class="allPage">
     <h1>All Appointments</h1>
 
 <% if (bookings.length === 0) { %>
-  <p>No Appointments yet</p>
+  <p class="no">No Appointments yet</p>
   <a href="/salons" class="book-now"> Book Now</a>
 <% } else { %>
   <% for (let appoint of bookings) { %>
     <div class="booking-card">
-      <p>Appointment ID: <%= appoint._id %></p>
-      <p>Date: <%= appoint.date.toLocaleDateString("en-US", { day: "numeric", month: "long" }) %></p>
-      <p>Time: <%= new Date(appoint.time).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" }) %></p>
-
-      <p>Salon: <%= appoint.salon_id.name %></p>
-      <p>Service: <%= appoint.service_id.name %></p>
-      <p>Price: BD<%= appoint.service_id.price %></p>
-      <p>Customer Name: <%= appoint.customerName %></p>
-      <p>Phone Number:+973 <%= appoint.phone %></p>
-      <p>special request: <%= appoint.notes %></p>
-      <p>Is Gigt?: <%= appoint.isGift %></p>
+      <p><strong>Appointment ID:</strong>
+        <%= appoint._id %>
+      </p>
+      <p><strong>Date:</strong>
+        <%= appoint.date.toLocaleDateString("en-US",{day:"numeric",month:"long"}) %>
+      </p>
+      <p><strong>Time:</strong>
+        <%= new Date(appoint.time).toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit"}) %>
+      </p>
+      
+      <p><strong>Salon:</strong>
+        <%= appoint.salon_id.name %>
+      </p>
+      <p><strong>Service:</strong>
+        <%= appoint.service_id.name %>
+      </p>
+      <p><strong>Price:</strong> BD<%= appoint.service_id.price %>
+      </p>
+      
+      <p><strong>Customer Name:</strong>
+        <%= appoint.customerName %>
+      </p>
+      <p><strong>Phone:</strong> +973 <%= appoint.phone %>
+      </p>
+      <p><strong>Special Request:</strong>
+        <%= appoint.notes || "None" %>
+      </p>
+      <p><strong>Gift:</strong>
+        <%= appoint.isGift ? "Yes" : "No" %>
+      </p>
 
 
 
 
       <form action="/salons/appoint/<%= appoint._id %>?_method=DELETE" method="POST" style="display:inline;">
-        <button type="submit">Cancel Booking</button>
+        <button type="submit" class="cancel">Cancel Booking</button>
       </form>
       <a href="/salons/appoint/<%= appoint._id %>/update">Update info</a>
     </div>
   <% } %>
 <% } %>
-
+</div>
 <% if (updated) { %>
   <script>alert('The food updated successfully');</script>
 <% } %>

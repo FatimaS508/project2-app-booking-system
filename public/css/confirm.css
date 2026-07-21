@@ -1,0 +1,67 @@
+.allPage{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #e5d5c6;
+}
+.title{
+    text-align:center;
+    margin-top:40px;
+    margin-bottom:10px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+}
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:35px;
+    font-size: 20px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+}
+.confirmation-card{
+    max-width:550px;
+    margin:auto;
+    padding:30px;
+    border:1px solid #ddd;
+    border-radius:12px;
+}
+.confirmation-card h2{
+    text-align:center;
+    margin-bottom:25px;
+    color:#e5d5c6;
+}
+.info-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 0;
+    border-bottom:1px solid #eee;
+}
+.info-row:last-of-type{
+    border-bottom:none;
+}
+.info-row span{
+    font-weight:600;
+    color:#e5d5c6;
+}
+.info-row p{
+    margin:0;
+    text-align:right;
+}
+hr{
+    border:none;
+    border-top:1px solid #ddd;
+    margin:28px 0;
+}
+.appointments-btn{
+    display:block;
+    width:fit-content;
+    margin:35px auto 0;
+    padding:10px 24px;
+    text-decoration:none;
+    color:inherit;
+    border-radius:8px;
+    transition:.2s;
+}
+.appointments-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 5px 12px rgba(0,0,0,.12);
+    opacity:.9;
+}

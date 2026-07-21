@@ -5,68 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/confirm.css">
 </head>
 <body>
     <%- include('../partials/navbar') %>
-    <h1>Thank you for choosing us. can't wait to see you!</h1>
-    <div>
-        <h2>Booking Confirmation</h2>
-        
-        
-        <h3>Service</h3>
-        <p>
-            <%= booking.service_id.name %>
-        </p>
-        
-        
-        <h3>Employee</h3>
-        <p>
-            <%= booking.employee_id.name %>
-        </p>
-        
-        
-        <h3>Date</h3>
-        <p>
-            <%= booking.date.toLocaleDateString("en-US", { day: "numeric" , month: "long" }) %>
-        </p>
-        
-        
-        <h3>Time</h3>
-        <p>
-            <%= new Date(booking.time).toLocaleTimeString("en-US", { hour: "numeric" , minute: "2-digit" }) %>
-        </p>
-        
-        
-        <hr>
-        
-        
-        <h3>Customer Information</h3>
-        
-        <p>
-            Name:
-            <%= booking.customerName %>
-        </p>
-        
-        
-        <p>
-            Phone:
-            <%= booking.phone %>
-        </p>
-        
-        
-        <p>
-            Notes:
-            <%= booking.notes || "No notes" %>
-        </p>
-        
-        
-        <p>
-            Gift:
+    <div class="allPage">
+    <h1 class="title">Thank You!</h1>
 
-            <%= booking.isGift ? "Yes" : "No" %>
-            <% if(isGift="Yes"){ %><p id="giftMessage">please send the reciever address on whatsapp number: 33842291</p><% } //next step: print recipt %>
+<p class="subtitle">
+    Your appointment has been booked successfully. We can't wait to see you!
+</p>
+
+<div class="confirmation-card">
+
+    <h2>Booking Confirmation</h2>
+
+    <div class="info-row">
+        <span>Service</span>
+        <p><%= booking.service_id.name %></p>
+    </div>
+
+    <div class="info-row">
+        <span>Employee</span>
+        <p><%= booking.employee_id.name %></p>
+    </div>
+
+    <div class="info-row">
+        <span>Date</span>
+        <p>
+            <%= booking.date.toLocaleDateString("en-US", { day: "numeric", month: "long" }) %>
         </p>
     </div>
-    <a href="/salons/appointments">All Appointments</a>
+
+    <div class="info-row">
+        <span>Time</span>
+        <p>
+            <%= new Date(booking.time).toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit"}) %>
+        </p>
+    </div>
+
+    <br>
+
+    <h2>Customer Information</h2>
+
+    <div class="info-row">
+        <span>Name</span>
+        <p><%= booking.customerName %></p>
+    </div>
+
+    <div class="info-row">
+        <span>Phone</span>
+        <p><%= booking.phone %></p>
+    </div>
+
+    <div class="info-row">
+        <span>Notes</span>
+        <p><%= booking.notes || "No notes" %></p>
+    </div>
+
+    <div class="info-row">
+        <span>Gift</span>
+        <p><%= booking.isGift ? "Yes" : "No" %></p>
+    </div>
+
+    <a class="appointments-btn" href="/salons/appointments">
+        View All Appointments
+    </a>
+
+</div></div>
 </body>
 </html>

@@ -5,79 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/booking-details.css">
 </head>
 <body>
     <%- include('../partials/navbar') %>
-    <a href="javascript:window.history.back();">←</a>
-    <h1>booking details</h1>
+    <a id="back" href="javascript:window.history.back();">←</a>
+
+<h1>Booking Details</h1>
+<div class="card">
+
+<div class="summary">
     <h2>Confirm Appointment</h2>
 
+    <div class="info-row">
+        <span>Service</span>
+        <p><%= service.name %></p>
+    </div>
 
-    <h3>Service:</h3>
-    <p>
-        <%= service.name %>
-    </p>
+    <div class="info-row">
+        <span>Price</span>
+        <p><%= service.price %></p>
+    </div>
 
-     <h3>Price:</h3>
-    <p>
-        <%= service.price %>
-    </p>
+    <div class="info-row">
+        <span>Employee</span>
+        <p><%= employee.name %></p>
+    </div>
 
+    <div class="info-row">
+        <span>Date</span>
+        <p><%= new Date(date).toLocaleDateString("en-US", { day: "numeric", month: "long" }) %></p>
 
-    <h3>Employee:</h3>
-    <p>
-        <%= employee.name %>
-    </p>
+    </div>
 
-
-    <h3>Date:</h3>
-    <p>
-        <%= date %>
-    </p>
-
-
-    <h3>Time:</h3>
-    <p>
-        <%= time %>
-    </p>
+    <div class="info-row">
+        <span>Time</span>
+        <p><%= new Date(time).toLocaleTimeString("en-US", { hour: "numeric" , minute: "2-digit" }) %></p>
 
 
+    </div>
+</div>
 
-    <form action="/salons/booking-details" method="POST">
+<form action="/salons/booking-details" method="POST">
 
+    <input type="hidden" name="service_id" value="<%= service._id %>">
+    <input type="hidden" name="employee_id" value="<%= employee._id %>">
+    <input type="hidden" name="date" value="<%= date %>">
+    <input type="hidden" name="time" value="<%= time %>">
 
-        <input type="hidden" name="service_id" value="<%= service._id %>">
+    <label>Name</label>
+    <input name="customerName" placeholder="Enter your name">
 
-        <input type="hidden" name="employee_id" value="<%= employee._id %>">
+    <label>Telephone</label>
+    <input name="phone" placeholder="Enter your phone number">
 
-        <input type="hidden" name="date" value="<%= date %>">
+    <label>Notes</label>
+    <textarea name="giftNote" placeholder="Anything you'd like the salon to know?"></textarea>
 
-        <input type="hidden" name="time" value="<%= time %>">
+    <label>
+        <input type="checkbox" name="isGift">
+        Is gift?
+    </label>
 
+    <small id="giftNote">
+        If this booking is a gift, please send the receiver's information on WhatsApp number: 7818890
+    </small>
 
-        <label>Name</label>
-        <input name="customerName">
+    <button type="submit">
+        Confirm Booking
+    </button>
 
-
-        <label>Telephone</label>
-        <input name="phone">
-
-
-        <label>Notes</label>
-        <textarea name="notes"></textarea>
-
-
-        <label>
-            <input type="checkbox" name="isGift">
-            Is gift?
-        </label>
-
-
-        <button type="submit">
-            Confirm Booking
-        </button>
-
-
-    </form>
+</form>
+</div>
 </body>
 </html>

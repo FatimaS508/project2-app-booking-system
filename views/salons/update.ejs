@@ -9,7 +9,7 @@
 </head>
 <body>
     <%- include('../partials/navbar') %>
-    <a href="javascript:window.history.back();" id="back">←</a>
+    <a href="javascript:window.history.back();" id="back">← </a>
  <form action="/salons/appoint/<%= updateBookings._id %>?_method=PUT" method="post">
     <label>Name</label>
     <input name="customerName" placeholder="Enter Your Name">
@@ -27,6 +27,7 @@
         <input type="checkbox" name="isGift">
         Is gift?
     </label>
+    <small id="giftNote"> If this booking is a gift, please send the receiver’s information on WhatsApp number: 7818890</small>
 
     <button type="submit">Update</button>
  </form>   
