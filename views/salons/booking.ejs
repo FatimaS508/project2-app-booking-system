@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Document</title> 
     <link rel="stylesheet" href="/css/navbar.css"> 
-    <link rel="stylesheet" href="/css/booking.css"> 
+    <link rel="stylesheet" href="/css/DateAndTime.css"> 
 </head> 
 <body> 
     <%- include('../partials/navbar') %> 
+    <div class="allPage">
  
     <a href="javascript:window.history.back();" class="back">← </a> 
     <h2> please select a date</h2> 
     <% dates.forEach(date => { %> 
         <button class="date-btn" data-date="<%= date.value %>" > 
-            <%# data-date stores the machine value %> 
             <%= date.display %>  
         </button> 
     <% }) %> 
@@ -47,7 +47,7 @@
     <div><button id="continueBtn" style="display: none;">
             Continue
         </button></div>
- 
+ </div>
 <script>
 const serviceId = "<%= service._id %>";
 const dateButtons = document.querySelectorAll(".date-btn");
@@ -56,7 +56,6 @@ const times = document.querySelector("#times");
 const feedback = document.querySelector("#feedback");
 const continueBtn = document.querySelector("#continueBtn");
 
-// Show time slots after selecting a date
 let selectedDate = null;
 let selectedTime = null;
 let selectedEmployee = null;
@@ -74,9 +73,6 @@ dateButtons.forEach(button => {
         times.style.display = "block";
     });
 });
-
-/// Handle time slot booking
-
 
 slots.forEach(slot => {
 

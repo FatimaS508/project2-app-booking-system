@@ -1,19 +1,32 @@
 <link rel="stylesheet" href="./css/navbar.css">
 <nav>
-    
-    <a href="/">Homepage</a>
-    <% if (user){ %>
-    <a href="/auth/sign-out">Logout</a>
-    <a href="/salons/appointments">All Appointments</a>
-    
 
-    <% } else{ %>
-    <a href="/auth/sign-up">Sign up</a>
-    <a href="/auth/sign-in">Login</a>
+    <div class="brand">
+        <a href="/">
+            <img src="/images/logo.png" alt="BeautyBook Logo" class="logo">
+        </a>
 
-    <% } %>
-    <a class="name" href="/">BeautyBook</a>
-    <a href="/" class="logo">
-        <img src="/images/logo.png" alt="BeautyBook Hub Logo">
-    </a>
+        <a href="/" class="name">
+            BeautyBook
+        </a>
+    </div>
+
+
+    <div class="links">
+
+        <a href="/">Homepage</a>
+
+        <% if (user){ %>
+            <a href="/auth/sign-out">Logout</a>
+            <a href="/salons/appointments">All Appointments</a>
+
+        <% } else { %>
+
+            <a href="/auth/sign-up">Sign up</a>
+            <a href="/auth/sign-in">Login</a>
+
+        <% } %>
+
+    </div>
+
 </nav>

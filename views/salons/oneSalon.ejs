@@ -9,18 +9,24 @@
 </head>
 <body>
     <%- include('../partials/navbar') %>
+    <div class="allPage">
+        <a href="javascript:window.history.back();" class="back">← </a>
     <h1></h1>
     <div class="img-name-info">
-    <img src="<%= salonFind.salon_URL %>" alt="salon image">
-        <h2 class="salonName"> <%= salonFind.name %></h2>
-        <button class="info" salon-id="<%= salonFind._id %>"> ⓘ </button>
+    <img src="<%= salonFind.salon_URL %>" alt="Salon Header">
+
+    <div class="salon-overlay">
+        
+        <h2 class="salonName"><%= salonFind.name %></h2>
+        <button class="info" salon-id="<%= salonFind._id %>">i</button>
     </div>
+</div>
     <dialog id="salonModel-<%= salonFind._id %>"> <h2>Salon Information</h2>
         <p> <%= salonFind.about %></p>
 
 
         <button class="closeButton">Close</button>
-    </dialog>
+    </dialog><br>
         <% for(let category of categories){ %>
             <div class="accordion">
                 <button class="accordion-head">
@@ -51,6 +57,7 @@
                 </a>
 
             </div>
+        </div>
 
 <script> //this is to expand each category
     document.querySelectorAll(".accordion-head").forEach(button => {
