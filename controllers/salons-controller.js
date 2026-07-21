@@ -25,8 +25,10 @@ router.get("/booking-details", async(req,res)=>{
 
 
     res.render("salons/booking-details.ejs",{
+        user: req.session.user_id,
 
         service,
+        price: service.price,
         employee,
 
         date:req.query.date,
@@ -35,6 +37,27 @@ router.get("/booking-details", async(req,res)=>{
 
     });
 
+});
+router.get("/appointments", async (req, res) => {
+    try {
+        
+
+        const bookings = await Booking.find({
+            user: req.session.user._id
+        })
+            .populate("service_id")
+            .populate("salon_id")
+            .populate("employee_id"); 
+
+        
+
+        res.render("salons/appointment.ejs", {
+            bookings
+        });
+
+    } catch (err) {
+        console.log(err);
+    }
 });
 
 router.get('/:salonId', async (req,res)=>{
@@ -96,6 +119,7 @@ router.post("/booking-details", async(req,res)=>{
     }
 
     const {
+        user,
         service_id,
         employee_id,
         date,
@@ -112,6 +136,7 @@ router.post("/booking-details", async(req,res)=>{
 
 
     const booking=await Booking.create({
+        user: req.session.user._id,
 
         service_id,
 
@@ -138,7 +163,7 @@ router.post("/booking-details", async(req,res)=>{
         const bookingInfo = await Booking.findById(booking._id).populate("service_id").populate("employee_id");
         console.log(bookingInfo);
         res.render("salons/confirm.ejs", {
-            booking: bookingInfo
+            booking: bookingInfo 
         });
 
 
@@ -147,6 +172,13 @@ router.post("/booking-details", async(req,res)=>{
     }
 
 });
+
+
+router.delete("/appoint/:id", async (req, res) => {
+  await Booking.findByIdAndDelete(req.params.id);
+  res.redirect("/salons/appointments");
+});
+
 
 
 

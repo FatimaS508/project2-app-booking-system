@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment</title>
+    <link rel="stylesheet" href="/css/navbar.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <h1>All Appointments</h1>
+
+<% if (bookings.length === 0) { %>
+  <p>No Appointments yet</p>
+  <a href="/salons" class="book-now"> Book Now</a>
+<% } else { %>
+  <% for (let appoint of bookings) { %>
+    <div class="booking-card">
+      <p>Appointment ID: <%= appoint._id %></p>
+      <p>Date: <%= appoint.date.toLocaleDateString("en-US", { day: "numeric", month: "long" }) %></p>
+      <p>Time: <%= new Date(appoint.time).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" }) %></p>
+
+      <p>Salon: <%= appoint.salon_id.name %></p>
+      <p>Service: <%= appoint.service_id.name %></p>
+      <p>Price: BD<%= appoint.service_id.price %></p>
+
+      <form action="/salons/appoint/<%= appoint._id %>?_method=DELETE" method="POST" style="display:inline;">
+        <button type="submit">Cancel Booking</button>
+      </form>
+    </div>
+  <% } %>
+<% } %>
+
+</body>
+</html>
