@@ -84,3 +84,58 @@ button:hover,
     box-shadow: 0 5px 12px rgba(0,0,0,.12);
     opacity: .9;
 }
+
+
+@media (max-width: 768px) {
+
+    .allPage {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+        margin: 25px 0;
+    }
+
+    .booking-card {
+        width: 95%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .booking-card p {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        margin: 10px 0;
+    }
+
+    p strong,
+    p span {
+        font-size: 15px;
+    }
+
+    .no {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .book-now {
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    button,
+    .booking-card a {
+        width: 100%;
+        margin: 8px 0 0;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    button {
+        margin-right: 0;
+    }
+
+}

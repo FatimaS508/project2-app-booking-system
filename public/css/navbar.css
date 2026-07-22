@@ -100,3 +100,46 @@ nav {
     transform: translateY(-2px);
 
 }
+
+
+
+@media (max-width: 768px) {
+
+    nav {
+        width: 95%;
+        padding: 10px 12px;
+        height: auto;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        gap: 10px;
+    }
+
+    .brand {
+        gap: 6px;
+        flex-shrink: 0;
+    }
+
+    .brand img {
+        width: 55px;
+        height: 55px;
+    }
+
+    .name {
+        font-size: 1rem;
+    }
+
+    .links {
+        display: flex;
+        gap: 6px;
+        flex-wrap: nowrap;
+    }
+
+    .links a {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+
+}

@@ -69,3 +69,40 @@ body{
 .salon-name:hover .salon-address {
   display: block;  
 }
+
+
+
+@media (max-width: 768px) {
+
+    h1 {
+        font-size: 2rem;
+        margin: 25px 0 10px;
+    }
+
+    h2 {
+        font-size: 1rem;
+        padding: 0 15px;
+    }
+
+    .salons-div {
+        gap: 15px;
+    }
+
+    .salon-card {
+        width: 95%;
+        height: 180px;
+        border-radius: 12px;
+    }
+
+    .salon-name {
+        font-size: 22px;
+        padding: 10px;
+    }
+
+    .salon-address {
+        display: block;
+        font-size: 13px;
+        margin-top: 5px;
+    }
+
+}

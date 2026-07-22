@@ -96,3 +96,49 @@ button:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 12px rgba(0,0,0,0.12);
 }
+
+
+
+@media (max-width: 768px) {
+
+    #back {
+        font-size: 16px;
+        margin: 12px;
+        padding: 5px 10px;
+    }
+
+    form {
+        width: 95%;
+        margin: 20px auto;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    textarea,
+    input:not([type="checkbox"]) {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    textarea {
+        min-height: 100px;
+    }
+
+    #giftNote {
+        font-size: 0.85rem;
+        padding: 8px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+    }
+
+}

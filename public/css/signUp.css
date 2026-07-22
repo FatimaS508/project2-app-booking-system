@@ -96,3 +96,43 @@ button:hover {
     background: #8b5e3c;
 
 }
+
+
+
+@media (max-width: 768px) {
+
+    .allPage {
+        padding: 0 15px;
+    }
+
+    h1 {
+        font-size: 26px;
+        margin-top: 30px;
+    }
+
+    form {
+        width: 100%;
+        max-width: 350px;
+        margin: 25px auto;
+        padding: 25px 20px;
+        box-sizing: border-box;
+        border-radius: 15px;
+    }
+
+    label {
+        margin-top: 15px;
+        font-size: 14px;
+    }
+
+    input {
+        padding: 11px;
+        font-size: 14px;
+    }
+
+    button {
+        margin-top: 25px;
+        padding: 12px;
+        font-size: 16px;
+    }
+
+}

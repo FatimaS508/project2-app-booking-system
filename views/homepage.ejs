@@ -9,9 +9,7 @@
 </head>
 <body>
     <%- include('./partials/navbar') %>
-    <!--<div class="themeImage-div">
-        <img src="../images/BeautyBook.png" class="themeImage">
-    </div>-->
+
 <div class="home-div">
  <% if (user) { %>
   <h1>Welcome <%= user.username %>!</h1>
@@ -19,10 +17,7 @@
   <h1>Welcome Guest</h1>
 <% } %>
     <p> Our platform helps you find trusted salons, book appointments easily, and discover beauty services near you <strong> all in one place.</strong> </p>
-    <a href="/salons" class="view-salons"> Discover salons</a>
+    <% if(user){ %><a href="/salons" class="view-salons"> Discover salons</a><% }else{ %><p>please <a href="/auth/sign-in" class="login">Login in</a> to descover our salons</p><% } %>
     </div>
-
-
-     <%//please adujt the css comment then push the code%>
    </body>
 </html>

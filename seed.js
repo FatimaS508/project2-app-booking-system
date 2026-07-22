@@ -1,4 +1,4 @@
-const dotenv = require("dotenv").config() //this allows me to use my .env values in this file
+const dotenv = require("dotenv").config() 
 const connectToDB = require('./db.js')
 const Salon = require('./models/salons.js')
 const Category= require('./models/categories.js')
@@ -20,7 +20,7 @@ async function seedDB(){
           name: "Aroma Beauty Lounge" ,
           address: "752, Saar area 507",
           about:" About Us: Aroma Beauty Lounge & Spa is a premium beauty and wellness salon located in Saar, Bahrain. We offer a wide range of services, including hair, nails, lashes, massage, Moroccan baths, and spa treatments. Our mission is to provide a relaxing, luxurious experience with professional care, high-quality products, and personalized service, helping every client feel confident and beautiful. Working Hours: 12AM - 9PM ",
-          salon_URL: "/images/1-aroma-header.jpeg" //show the 1-aroma-header.jpeg
+          salon_URL: "/images/1-aroma-header.jpeg" 
         },
         {
             name: "blossom district beauty salon",
@@ -142,20 +142,20 @@ const insertEmployees = await Emp.insertMany([
 ])
 function generateAvailability(startHour, endHour) { 
 
-    const slots = []; //empty array holds time slot
+    const slots = []; 
 
-    const today = new Date(); //new object to hold current date, time
+    const today = new Date(); 
 
-    today.setHours(startHour, 0, 0, 0); //set today for the given start hour
+    today.setHours(startHour, 0, 0, 0); 
 
-    while (today.getHours() < endHour) { //loop until reach end hour
+    while (today.getHours() < endHour) 
 
-        slots.push({ //add new slot and by default set to avaailable-not booked
+        slots.push({ 
             time: new Date(today),
             isBooked: false
         });
 
-        today.setMinutes(today.getMinutes() + 30); //next slot after 30 min
+        today.setMinutes(today.getMinutes() + 30); 
     }
 
     return slots;
@@ -165,7 +165,7 @@ function generateAvailability(startHour, endHour) {
 }catch(err){
     console.error("Seeding error:", err);
 }
-}
+
 
 
 

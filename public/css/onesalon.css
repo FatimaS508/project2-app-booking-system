@@ -227,3 +227,90 @@ dialog p {
 }
 
 
+
+@media (max-width: 768px) {
+
+    .allPage {
+        padding: 0 10px;
+    }
+
+    .back {
+        font-size: 16px;
+        margin: 12px;
+        padding: 5px 10px;
+    }
+
+    .img-name-info {
+        height: 250px;
+        border-radius: 20px;
+    }
+
+    .img-name-info img {
+        border-radius: 20px;
+    }
+
+    .salon-overlay {
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .salonName {
+        font-size: 26px;
+    }
+
+    .info {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
+
+    .accordion-head {
+        padding: 12px 15px;
+        font-size: 16px;
+    }
+
+    .accordion-head span {
+        font-size: 20px;
+    }
+
+    .service {
+        padding: 12px;
+        gap: 10px;
+        height: auto;
+    }
+
+    .service h4 {
+        font-size: 15px;
+    }
+
+    .service p {
+        font-size: 14px;
+    }
+
+    .service-radio {
+        width: 16px;
+        height: 16px;
+    }
+
+    dialog {
+        width: 95%;
+        padding: 18px;
+    }
+
+    dialog h2 {
+        font-size: 22px;
+    }
+
+    dialog p {
+        font-size: 15px;
+    }
+
+    .button {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        font-size: 16px;
+    }
+
+}
+

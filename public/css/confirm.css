@@ -65,3 +65,56 @@ hr{
     box-shadow:0 5px 12px rgba(0,0,0,.12);
     opacity:.9;
 }
+
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    .allPage {
+        padding: 15px;
+    }
+
+    .title {
+        font-size: 2rem;
+        margin-top: 25px;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+        margin-bottom: 25px;
+        padding: 0 10px;
+    }
+
+    .confirmation-card {
+        width: 95%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .confirmation-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .info-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .info-row span,
+    .info-row p {
+        font-size: 15px;
+    }
+
+    .info-row p {
+        text-align: left;
+    }
+
+    .appointments-btn {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+        box-sizing: border-box;
+    }
+
+}

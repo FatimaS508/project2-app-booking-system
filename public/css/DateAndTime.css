@@ -155,4 +155,72 @@ h2 {
 
 
 
+@media (max-width: 768px) {
+
+    .allPage {
+        padding: 15px;
+    }
+
+    .back {
+        font-size: 16px;
+        margin: 10px 0 20px;
+        padding: 5px 10px;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+
+
+    .date-btn {
+        width: 60px;
+        height: 60px;
+        margin: 5px;
+        font-size: 12px;
+    }
+
+
+    .dates {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+  
+    #times {
+        text-align: center;
+    }
+
+    .slot {
+        width: 75px;
+        height: 40px;
+        margin: 5px;
+        font-size: 14px;
+    }
+
+   
+    #continueBtn {
+        width: 100%;
+        max-width: 350px;
+        display: block;
+        margin: 25px auto 0;
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    #feedback {
+        text-align: center;
+        font-size: 15px;
+    }
+
+}
+
+
+
 

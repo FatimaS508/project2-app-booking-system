@@ -7,16 +7,16 @@ const Service = require("../models/service")
 const emp= require("../models/employee")
 const Booking = require("../models/booking")
 
-/*router.get("/FR", async (req, res) => {
-  res.render("salons/timing.ejs");
-});*/
 
 router.get('/', async (req,res)=>{
+    try{
     const salon= await Salon.find()
     res.render('salons/all-salons.ejs', {salons : salon})
+    }catch(err){console.log(err)}
 })
 
 router.get("/booking-details", async(req,res)=>{
+    try{
 
     const service = await Service.findById(req.query.service);
 
@@ -36,6 +36,7 @@ router.get("/booking-details", async(req,res)=>{
         isGift
 
     });
+}catch(err){console.log(err)}
 
 });
 router.get("/appointments", async (req, res) => {
@@ -61,12 +62,14 @@ router.get("/appointments", async (req, res) => {
 });
 
 router.get('/:salonId', async (req,res)=>{
+    try{
     const salonFind= await Salon.findById(req.params.salonId)
     
 
-    const categories= await Category.find({salon_id: salonFind._id}).populate("services") //find all documents in category collection has salon id match value we clicked
+    const categories= await Category.find({salon_id: salonFind._id}).populate("services") 
     const services= await Service.find({salon_id: salonFind._id}).populate('category_id')
     res.render('salons/oneSalon.ejs', {salonFind , categories, services} )
+    }catch(err){console.log(err)}
 })
 
 
@@ -79,17 +82,17 @@ router.get("/booking/:serviceId", async (req, res) => {
             salon_id: service.salon_id
         });
 
-        let dates = []; //make cards
+        let dates = []; 
 
-        for (let i = 0; i < 7; i++) { //7 cards
+        for (let i = 0; i < 7; i++) { 
 
-            let date = new Date(); //create fresh today's date everytime
+            let date = new Date(); 
 
-            date.setDate(date.getDate() + i); //move into the 7 cards
+            date.setDate(date.getDate() + i);
 
-            dates.push({//two version of date
-                value: date.toISOString().split("T")[0], //for machine/server to understand it
-                display: date.toLocaleDateString("en-US", { //to browser/ show it in page
+            dates.push({
+                value: date.toISOString().split("T")[0],
+                display: date.toLocaleDateString("en-US", { 
                     weekday: "short",
                     day: "numeric",
                     month: "short"
@@ -175,18 +178,29 @@ router.post("/booking-details", async(req,res)=>{
 
 
 router.delete("/appoint/:id", async (req, res) => {
+    try{
    await Booking.findByIdAndDelete(req.params.id);
   res.redirect("/salons/appointments");
+}catch(err){console.log(err)}
 });
 
 router.get("/appoint/:id/update", async (req,res)=>{
+    try{
 const update = await Booking.findById(req.params.id)
 res.render("salons/update.ejs", {updateBookings: update})
+    }catch(err){console.log(err)}
 })
 
 router.put("/appoint/:id", async (req,res)=>{
+    try{
+    if(req.body.isGift==="on"){
+        req.body.isGift=true;
+    }else{
+        req.body.isGift= false;
+    }
     const updated = await Booking.findByIdAndUpdate(req.params.id, req.body)
     res.redirect("/salons/appointments?updated=true");
+    }catch(err){console.log(err)}
 })
 
 
