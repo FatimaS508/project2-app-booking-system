@@ -61,7 +61,11 @@ app.use('/',indexController)
 app.use('/salons',salonsController)
 
 
+function render404(req,res,next){
+  res.render('404.ejs')
+}
 
+app.use(render404)
 
 
 

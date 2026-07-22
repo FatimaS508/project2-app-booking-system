@@ -11,7 +11,8 @@ const categorySchema = new mongoose.Schema({
         ref: "Salon",
         required: true
     },
-    services: [{ type: mongoose.Schema.Types.ObjectId, ref: "Service" }]
+    services: [
+        { type: mongoose.Schema.Types.ObjectId, ref: "Service" }]
 }, { timestamps: true });
 
 const Category= mongoose.model('Category', categorySchema)

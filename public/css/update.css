@@ -96,6 +96,13 @@ button:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 12px rgba(0,0,0,0.12);
 }
+h1{
+    text-align: center;
+    color:#666;
+    margin-bottom:35px;
+    font-size: 30px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+}
 
 
 
