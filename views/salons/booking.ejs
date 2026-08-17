@@ -1,18 +1,21 @@
 <!DOCTYPE html> 
 <html lang="en"> 
 <head> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Date&time</title> 
-    <link rel="stylesheet" href="./css/navbar.css"> 
-    <link rel="stylesheet" href="./css/DateAndTime.css"> 
+    <link rel="stylesheet" href="/css/navbar.css"> 
+    <link rel="stylesheet" href="/css/DateAndTime.css"> 
 </head> 
 <body> 
     <%- include('../partials/navbar') %> 
     <div class="allPage">
  
-    <a href="javascript:window.history.back();" class="back">← </a> 
-    <h2> please select a date</h2> 
+    <a href="javascript:window.history.back();" class="back">&lt; Back</a> 
+    <h2 class="date_title"> please select a date</h2> 
     <% dates.forEach(date => { %> 
         <button class="date-btn" data-date="<%= date.value %>" > 
             <%= date.display %>  
@@ -21,7 +24,7 @@
  
     <div id="times" style="display:none;"> 
         <% employees.forEach(employee => { %>  
-            <h3><%= employee.name %></h3> 
+            <h3 class="emp_name">Employee:  <%= employee.name %></h3> 
  
             <% employee.availability.forEach(slot => { %> 
                 <button 

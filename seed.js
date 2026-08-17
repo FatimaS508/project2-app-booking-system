@@ -4,7 +4,8 @@ const Salon = require('./models/salons.js')
 const Category= require('./models/categories.js')
 const Service= require('./models/service.js')
 const Emp= require('./models/employee.js')
-
+const dns = require("dns")
+dns.setServers(["8.8.8.8", "1.1.1.1"])
 connectToDB()
 
 async function seedDB(){
@@ -121,7 +122,7 @@ const insertEmployees = await Emp.insertMany([
         salon_id: createdSalons[1]._id ,
         rate: 5,
         availability: generateAvailability(13,21)
-                 
+                  
     },
     {
         name: "Anaya R.",
@@ -160,13 +161,11 @@ function generateAvailability(startHour, endHour) {
 
     return slots;
 }
-
-
-}catch(err){
+catch(err){
     console.error("Seeding error:", err);
 }
 
-
+}
 
 
 seedDB()

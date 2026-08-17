@@ -1,80 +1,76 @@
-.allPage{
-    min-height: calc(100vh - 70px);
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f7f2ed;
+  display: block;
+  margin: 0;
 }
-h1 {
-    text-align: center;
 
-    margin-top: 50px;
-
-    color: #5c4033;
-
-    font-size: 32px;
+.allPage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
+
 form {
-    width: 350px;
-
-    margin: 40px auto;
-
-    padding: 35px;
-
-    background: white;
-
-    border-radius: 20px;
-
-    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+  width: 320px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  padding: 30px;
 }
+
+h1 {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  color: #5c4033;
+  margin-bottom: 20px;
+}
+
 label {
-    display: block;
-
-    margin-bottom: 8px;
-
-    margin-top: 18px;
-
-    color: #8b5e3c;
-
-    font-weight: bold;
+  font-size: 14px;
+  font-weight: bold;
+  color: #8b5e3c;
+  margin-bottom: 10px;
+  display: block;
 }
+
 input {
-    width: 100%;
-    padding: 12px;
-    box-sizing: border-box;
-
-    border-radius: 12px;
-
-    border: 1px solid #e5d5c6;
-
-    outline: none;
-
-    font-size: 15px;
-
-    background: #fff;
+  border: none;
+  border-bottom: 2px solid #e5d5c6;
+  padding: 8px;
+  font-size: 14px;
+  color: #5c4033;
+  background: transparent;
+  outline: none;
+  transition: border-color 0.3s;
+  width: 100%;
+  margin-bottom: 18px;
 }
+
 input:focus {
-    border-color: #8b5e3c;
-    box-shadow: 0 0 5px rgba(139,94,60,0.3);
+  border-color: #8b5e3c;
 }
+
 button {
-    width: 100%;
-    margin-top: 30px;
-
-    padding: 13px;
-
-    border: none;
-
-    border-radius: 25px;
-
-    background: #5c4033;
-
-    color: white;
-
-    font-size: 17px;
-
-    cursor: pointer;
-
-    transition: 0.3s;
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  border: none;
+  background: #5c4033;
+  color: #fff;
 }
+
 button:hover {
-    background: #8b5e3c;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
 }
 
 

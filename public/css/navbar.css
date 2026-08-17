@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&family=Pacifico&family=Parisienne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Londrina+Solid:wght@100;300;400;900&family=Pacifico&family=Parisienne&display=swap');
+
 body{
   background-color: #2c1b0f
 }
@@ -55,11 +58,14 @@ nav {
 
     color: #251d12;
 
-    font-size: 1.5rem;
+    font-size: 30px;
 
     font-weight: bold;
 
     letter-spacing: 1px;
+  font-family: "Parisienne", cursive;
+  font-weight: 400;
+  font-style: normal;
 
 }
 
@@ -99,6 +105,12 @@ nav {
 
     transform: translateY(-2px);
 
+}
+.buttons {
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
 }
 
 

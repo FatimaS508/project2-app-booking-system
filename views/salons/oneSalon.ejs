@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>salon</title>
-    <link rel="stylesheet" href="./css/navbar.css">
-    <link rel="stylesheet" href="./css/onesalon.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/onesalon.css">
 </head>
 <body>
     <%- include('../partials/navbar') %>
     <div class="allPage">
-        <a href="javascript:window.history.back();" class="back">← </a>
+        <a href="javascript:window.history.back();" class="back">&lt; Back </a>
     <h1></h1>
     <div class="img-name-info">
     <img src="<%= salonFind.salon_URL %>" alt="Salon Header">
@@ -31,7 +31,7 @@
             <div class="accordion">
                 <button class="accordion-head">
                     <%= category.name %>
-                        <span>+</span>
+                        <span class="plus">+</span>
                 </button>
                 <div class="accordion-content">
         
@@ -39,7 +39,7 @@
         
                         <div class="service">
                             <input type="radio" name="service" value="<%= service._id %>" class="service-radio">
-                            <h4>
+                            <h4 class="serv_name">
                                 <%= service.name %>
                             </h4>
                             <p>

@@ -11,21 +11,31 @@
 }
 .back {
     text-decoration: none;
-    font-size: 20px;
-    margin: 20px;
+    font-size: 16px;
+    margin: 10px;
     display: inline-block;
-    color: inherit;
-
-    padding: 6px 12px;
-    background-color: #eeeeee52;
     color: #333;
-
-    border-radius: 4px;
+    padding: 5px 10px;
+    border-radius: 6px;
     font-weight: 500;
+    background-color: #e5d5c6;
+
+    border: 2px solid #333;
+    box-shadow: 3px 3px 0px #333;
+
+    transition: all 0.2s ease;
 }
+
 .back:hover {
-    opacity: 0.7;
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px #333;
 }
+
+.back:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0;
+}
+
 
 
 .img-name-info img {
@@ -102,54 +112,82 @@
 }
 
 .accordion {
-    width: 100%;
+    display: block;
+  align-items: center;   
+  justify-content: space-between; 
+  padding: 8px 12px;    
+  height: auto;         
+  border: 2px solid #3a251b;
+  border-radius: 10px;
+  background: #d5c4b2;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;      
     margin-bottom: 15px;
 }
 .accordion-head {
-    width: 100%;
-    padding: 15px 20px;
-    background: #e5d5c6;
-    border: none;
-    border-radius: 12px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #5c4033;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
+  width: 100%;
+  padding: 10px 15px;
+  background: #e5d5c6;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #5c4033;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
 }
+
 .accordion-head span {
-    font-size: 25px;
+  font-size: 18px;
+  font-weight: bold;
 }
+
 .accordion-content {
-    display: none;
-    padding: 10px 5px;
+  display: none;
+  padding: 10px 15px;
+  background: #f7f2ed;
+  border-radius: 8px;
+  margin-top: 6px;
 }
 
 .accordion-content.active {
-    display: block;
+  display: block;
 }
+
 .service {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    height: 30px;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #ddd;
+  gap: 20px;
+}
 
-    padding: 15px;
-    margin: 10px 0;
+.service:last-child {
+  border-bottom: none;
+}
 
-    border: 1px solid #e5d5c6;
-    border-radius: 12px;
+.service h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #3a251b;
+}
 
-    color: #5c4033;
-    background-color: white;
+.service p {
+  margin: 0;
+  font-size: 14px;
+  color: #5c4033;
 }
 .service-radio {
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
+   width: 18px;
+  height: 18px;
+  accent-color: #3a251b; 
+  cursor: pointer;
 }
+
 .service h4 {
     margin: 0;
     flex: 1;
@@ -159,6 +197,12 @@
     margin: 0;
     font-weight: bold;
     color: #a67c52;
+}
+.serv_name{
+    margin-left: 10px;       
+  font-size: 15px;
+  font-weight: 500;
+  color: #3a251b;
 }
 
 
@@ -201,8 +245,40 @@ dialog p {
 }
 
 .continue {
-    margin-top: 30px;
-    text-align: center;
+    
+    cursor: pointer;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  padding: 12px 24px;
+  border-radius: 100px;         
+  background: #d5c4b216;           
+  border: 2px solid #3a251b;     
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #3a251b;
+}
+#continue{
+    
+    align-items: center;
+}
+#continue:hover {
+  background: #cbb49a;           
+}
+
+#continue span {
+  width: 22px;
+  margin-left: 10px;
+  transition: transform 0.3s ease-in-out;
+  fill: #3a251b;                 
+}
+
+#continue:hover span {
+  transform: translateX(5px);    
+}
+
+#continue:active {
+  transform: scale(0.95);        
 }
 .button {
     display: inline-block;
@@ -224,6 +300,27 @@ dialog p {
 
 .button:hover {
     background: #8b5e3c;
+}
+.plus{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 2px solid #3a251b;
+  background: #d5c4b2;
+  color: #3a251b;
+  font-size: 22px;       
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.plus:hover{
+background: #3a251b;
+  color: #fff;           
+  transform: scale(1.05);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
 

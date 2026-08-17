@@ -1,22 +1,31 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
-#back {
+.back {
     text-decoration: none;
-    font-size: 20px;
-    margin: 20px;
+    font-size: 16px;
+    margin: 10px;
     display: inline-block;
-    color: inherit;
-
-    padding: 6px 12px;
-    background-color: #eeeeee52;
     color: #333;
-
-    border-radius: 4px;
+    padding: 5px 10px;
+    border-radius: 6px;
     font-weight: 500;
+    background-color: #e5d5c6;
+
+    border: 2px solid #333;
+    box-shadow: 3px 3px 0px #333;
+
+    transition: all 0.2s ease;
 }
-#back:hover {
-    opacity: 0.7;
+
+.back:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px #333;
+}
+
+.back:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0;
 }
 form {
     max-width: 500px;
